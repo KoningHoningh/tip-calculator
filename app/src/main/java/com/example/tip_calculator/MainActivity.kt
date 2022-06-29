@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tip_calculator.databinding.ActivityMainBinding
 import java.text.NumberFormat
+import java.util.*
 import kotlin.math.ceil
 
 class MainActivity : AppCompatActivity() {
@@ -19,12 +20,13 @@ class MainActivity : AppCompatActivity() {
 
     //The action performed by clicking the button
     private fun calculateTip() {
-        val stringInTextField = binding.plainTextInput.text.toString() //gets input from the input field
+        val stringInTextField = binding.costOfServiceEditText.text.toString() //gets input from the input field
         val cost = stringInTextField.toDoubleOrNull() //converts it to either Null or a Double
-        //determines wheter or not cost is Null and ends the calculation with an empty string if Null
-        if (cost == null)
+        //determines wheter or not cost is Null
+        if (cost == null || cost == 0.0)
         {
-            binding.tipResult.text = ""
+            //Sets tip to 0.0
+            displayTip(0.0)
             return
         }
         //gets the tipping percentage based on the checked radio button
@@ -36,11 +38,20 @@ class MainActivity : AppCompatActivity() {
 
         var tip = cost * tipPercentage //calculates tip
         //if rounding up was selected, this will round the tip up.
-        if (binding.roundUpSwitch.isChecked) { tip = ceil(tip)
+        if (binding.roundUpSwitch.isChecked) { tip = ceil(tip*5) / 5
         }
-
-        //formats the view into a currency format and replaces the tip result with the actual tip.
-        val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
-        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
+        //calls displayTip for the actual tip value
+        displayTip(tip)
     }
+
+    //formats the view into a currency format and replaces the tip result with the actual tip.
+    private fun displayTip(tip: Double) {
+
+        val formattedTip = NumberFormat.getCurrencyInstance(Locale.GERMANY).format(tip)
+        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
+
+
+
+    }
+
 }

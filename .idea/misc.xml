@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Eelco/projects/AndroidStudioProjects/TipCalculator/app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="..\:/Users/Eelco/projects/AndroidStudioProjects/TipCalculator/app/src/main/res/drawable/ic_roundup.xml" value="0.2185" />
+        <entry key="..\:/Users/Eelco/projects/AndroidStudioProjects/TipCalculator/app/src/main/res/drawable/ic_service.xml" value="0.2185" />
+        <entry key="..\:/Users/Eelco/projects/AndroidStudioProjects/TipCalculator/app/src/main/res/drawable/ic_store.xml" value="0.2185" />
+        <entry key="..\:/Users/Eelco/projects/AndroidStudioProjects/TipCalculator/app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
   </component>
